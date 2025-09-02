@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
-        /* Global Styles */
+         /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -195,7 +195,11 @@
             border: none;
             cursor: pointer;
             padding: 0;
-            z-index: 2001; /* ensure toggle sits above the overlay */
+            z-index: 2001;
+            color: white;
+        }
+
+        header.scrolled .mobile-toggle {
             color: var(--primary-color);
         }
 
@@ -267,6 +271,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            display: inline-block;
         }
 
         .hero-btn:hover {
@@ -779,7 +784,6 @@
             transform: scale(1);
         }
 
-        /* Smooth reset animation */
         .step-circle:not(.active) .circle-fill {
             transform: scale(0);
             transition: transform 0.4s ease-out;
@@ -848,7 +852,6 @@
             left: 0;
         }
 
-        /* Smooth reset animation for arrows */
         .arrow-line:not(.active)::after {
             left: -100%;
             transition: left 0.4s ease-out;
@@ -868,7 +871,6 @@
             border-left-color: #764ba2;
         }
 
-        /* Animation Keyframes */
         @keyframes fillCircle {
             from {
                 transform: scale(0);
@@ -1012,8 +1014,27 @@
         }
 
         @media (max-width: 768px) {
+            /* Reduce header height on mobile */
+            header {
+                padding: 12px 0;
+            }
+            
+            /* Adjust logo size for mobile */
+            .logo img {
+                height: 40px !important;
+                width: auto;
+            }
+            
             .mobile-toggle {
                 display: block;
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .mobile-toggle i {
+                color: white;
+                font-size: 20px;
             }
 
             header.scrolled .mobile-toggle {
@@ -1022,7 +1043,10 @@
 
             .nav-menu {
                 position: fixed;
-                inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
                 background: rgba(0,0,0,0.96);
                 display: flex;
                 flex-direction: column;
@@ -1032,13 +1056,11 @@
                 visibility: hidden;
                 transition: opacity 0.35s ease, visibility 0.35s ease;
                 z-index: 2000;
-                padding: 0 20px; /* horizontal padding to avoid edge clipping */
+                padding: 0;
                 margin: 0;
-                overflow-y: auto; /* allow vertical scrolling on small screens */
-                -webkit-overflow-scrolling: touch;
+                overflow: hidden;
                 backface-visibility: hidden;
                 -webkit-backface-visibility: hidden;
-                box-sizing: border-box;
             }
 
             .nav-menu.active {
@@ -1054,34 +1076,38 @@
                 text-align: center;
                 width: 100%;
                 list-style: none;
-                display: block;
             }
 
-            .nav-menu.active li { opacity: 1; transform: translateY(0); }
+            .nav-menu.active li { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
 
             .nav-menu li a {
                 color: white;
                 font-size: 28px;
                 font-family: var(--heading-font);
                 font-weight: 500;
-                padding: 12px 20px; /* larger tap target */
-                display: block; /* fill available width */
-                width: 100%;
-                box-sizing: border-box;
+                padding: 8px 12px;
+                display: inline-block;
                 text-transform: uppercase;
                 letter-spacing: 2px;
                 transition: color 0.25s ease, transform 0.25s ease;
             }
 
-            /* active page menu item slightly larger */
             .nav-menu li a.active {
                 font-size: 34px;
                 font-weight: 600;
             }
 
-            .nav-menu li a:hover { color: var(--accent-color); transform: scale(1.05); }
+            .nav-menu li a:hover { 
+                color: var(--accent-color); 
+                transform: scale(1.05); 
+            }
 
-            .header-icons { display: none; }
+            .header-icons { 
+                display: none; 
+            }
 
             .hero-layout {
                 grid-template-columns: 1fr;
@@ -1089,17 +1115,37 @@
                 text-align: center;
             }
 
-            /* Ensure hero content sits below the header on mobile */
+            /* Increase gap between header and hero content on mobile */
             .hero-section {
-                padding-top: 140px;
+                padding-top: 180px;
+                padding-bottom: 60px;
+            }
+            
+            /* Additional spacing for hero content */
+            .hero-content {
+                margin-top: 0;
+                padding: 0 20px;
+            }
+
+            .hero-content .subtitle {
+                font-size: 12px;
+                margin-bottom: 15px;
             }
 
             .hero-content h1 {
                 font-size: 48px;
+                margin-bottom: 25px;
             }
 
             .hero-content p {
                 font-size: 16px;
+                margin: 0 auto 30px;
+                max-width: 100%;
+            }
+
+            .hero-btn {
+                padding: 12px 30px;
+                font-size: 14px;
             }
 
             .interactive-point {
@@ -1125,8 +1171,6 @@
             .carousel-slide.next {
                 transform: translate(-50%, -50%) translateZ(-150px) translateX(200px) rotateY(-25deg) scale(0.85);
             }
-
-
 
             .carousel-nav {
                 width: 50px;
@@ -1188,17 +1232,65 @@
         }
 
         @media (max-width: 576px) {
+            /* Even smaller header for small phones */
+            header {
+                padding: 10px 0;
+            }
+            
+            .logo img {
+                height: 35px !important;
+            }
+            
+            .mobile-toggle {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .mobile-toggle i {
+                font-size: 18px;
+            }
+            
             .hero-section {
-                padding: 60px 0;
-                min-height: 80vh;
+                padding-top: 120px;
+                padding-bottom: 50px;
+                min-height: 100vh;
+            }
+            
+            /* Ensure content has proper spacing */
+            .hero-content {
+                margin-top: 40px;
+                padding: 0 15px;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 11px;
+                margin-bottom: 10px;
+                letter-spacing: 2px;
             }
 
             .hero-content h1 {
+                font-size: 36px;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+            
+            .hero-content h1 .highlight {
                 font-size: 42px;
             }
 
             .hero-content p {
-                font-size: 15px;
+                font-size: 14px;
+                margin-bottom: 25px;
+                line-height: 1.6;
+            }
+
+            .hero-btn {
+                padding: 10px 25px;
+                font-size: 13px;
+            }
+
+            .hero-image {
+                margin-top: 30px;
             }
 
             .map-frame {
@@ -1243,8 +1335,6 @@
             .carousel-slide.next {
                 transform: translate(-50%, -50%) translateZ(-100px) translateX(150px) rotateY(-20deg) scale(0.9);
             }
-
-
 
             .carousel-nav {
                 width: 45px;
@@ -1306,7 +1396,7 @@
                     </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt
                         ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nos</p>
-                    <a href="#services" class="hero-btn">View more</a>
+                    <a href="#services" class="hero-btn">Shop Now</a>
                 </div>
 
                 <!-- Right Image with Interactive Points -->
