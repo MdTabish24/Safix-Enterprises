@@ -1,6 +1,6 @@
 # Safix Enterprises - Official Website
 
-![Safix Enterprises](https://raw.githubusercontent.com/your-username/your-repo-name/main/logo.png) <!-- Replace with the actual path to your logo in the repo -->
+![Safix Enterprises]([https://raw.githubusercontent.com/your-username/your-repo-name/main/logo.png](https://github.com/MdTabish24/Safix-Enterprises/blob/main/logo.png))
 
 This repository contains the source code for the official static website of Safix Enterprises, a company specializing in premium construction, interior design, and IT services.
 
