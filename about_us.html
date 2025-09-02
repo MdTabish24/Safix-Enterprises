@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Premier Construction & Interior Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d2d2d;
+            --accent-color: #007bff;
+            --accent-light: #0056b3;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --white: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --box-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --heading-font: 'Playfair Display', serif;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: var(--dark-color);
+            line-height: 1.7;
+            font-family: var(--body-font);
+            font-weight: 400;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles - Glass Effect */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .logo {
+            padding: 10px 0;
+            font-weight: 400;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-family: var(--body-font);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            display: none;
+        }
+
+        header.scrolled .logo {
+            color: var(--primary-color);
+        }
+
+        header.scrolled .logo::before {
+            background: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            margin-left: 35px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.9);
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: white;
+        }
+
+        header.scrolled .nav-menu a {
+            color: var(--dark-color);
+        }
+
+        header.scrolled .nav-menu a::after {
+            background: var(--accent-color);
+        }
+
+        header.scrolled .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header Icons */
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-icon {
+            color: rgba(0, 0, 0, 0.9);
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .header-icon:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        header.scrolled .header-icon {
+            color: var(--dark-color);
+        }
+
+        header.scrolled .header-icon:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 2001;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://th.bing.com/th/id/OIP.q6YsVLPBZgXAKyuKEC2PmQHaEz?w=242&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px 80px;
+            margin-top: 70px;
+            color: white;
+        }
+        .hero-section2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://th.bing.com/th/id/OIP.spem657B5UiRhmf3f_MT-AHaEY?w=282&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px 80px;
+            margin-top: 70px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-reverse .hero-image {
+            order: 1;
+        }
+
+        .hero-reverse .hero-text {
+            order: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><rect fill="%23f0f0f0" width="600" height="400"/><g fill="%23333"><rect x="50" y="100" width="150" height="200" opacity="0.2"/><rect x="250" y="80" width="150" height="220" opacity="0.3"/><rect x="450" y="120" width="100" height="180" opacity="0.2"/></g><text x="300" y="200" font-family="Arial" font-size="24" text-anchor="middle" fill="%23666">Team at Work</text></svg>') center/cover;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .team-member {
+            display: flex;
+            gap: 30px;
+            align-items: start;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .member-info h3 {
+            font-size: 24px;
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: #007cba;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #f0f4f8;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ffdd00;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Simple Leader Sections */
+        .about-leader-section {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-company-section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            text-align: center;
+        }
+
+        .leader-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .leader-content.align-left {
+            margin-left: 20px;
+            margin-right: auto;
+        }
+
+        .leader-content.align-right {
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        .leader-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .company-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .company-content h3 {
+            font-size: 36px;
+            font-weight: 600;
+            font-family: var(--heading-font);
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .company-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        /* Our Work Section */
+        .work-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .work-gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .main-video {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-video:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-overlay.playing {
+            opacity: 0;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .play-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .play-btn i {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-left: 3px;
+        }
+
+        .work-info {
+            padding: 25px;
+        }
+
+        .work-info h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .work-info p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .work-thumbnails {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .thumbnail-item {
+            position: relative;
+            height: 90px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .thumbnail-item.active {
+            border-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+
+        .thumbnail-item:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .thumbnail-item:hover .thumbnail-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .thumbnail-overlay i {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Instagram Gallery Section */
+        .instagram-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .instagram-header h2 {
+            font-size: 24px;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .instagram-header p {
+            font-size: 16px;
+            color: #999;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .instagram-gallery-container {
+            position: relative;
+            height: 200px;
+            perspective: 1000px;
+            margin-bottom: 50px;
+            overflow: visible;
+        }
+
+        .instagram-gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .instagram-item {
+            position: absolute;
+            width: calc(100% / 6);
+            height: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.6s ease;
+            border-radius: 8px;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .instagram-item.active {
+            transform: translateZ(0) scale(1);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        .instagram-item.next {
+            transform: translateZ(-100px) translateX(20px) rotateY(-15deg) scale(0.8);
+            opacity: 0.6;
+            z-index: 3;
+        }
+
+        .instagram-item.prev {
+            transform: translateZ(-100px) translateX(-20px) rotateY(15deg) scale(0.8);
+            opacity: 0.6;
+            z-index: 3;
+        }
+
+        .instagram-item.hidden {
+            transform: translateZ(-200px) scale(0.6);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav.prev {
+            left: 10px;
+        }
+
+        .gallery-nav.next {
+            right: 10px;
+        }
+
+        .gallery-nav i {
+            font-size: 14px;
+        }
+
+        .consultation-btn-container {
+            margin-top: 40px;
+        }
+
+        .consultation-btn {
+            background: #333;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .consultation-btn:hover {
+            background: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+
+            header.scrolled .mobile-toggle { color: var(--primary-color); }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0,0,0,0.96);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.35s ease, visibility 0.35s ease;
+                z-index: 2000;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+
+            .nav-menu.active { opacity: 1; visibility: visible; }
+
+            .nav-menu li {
+                opacity: 0;
+                transform: translateY(12px);
+                transition: opacity 0.28s ease, transform 0.28s ease;
+                margin: 14px 0;
+                text-align: center;
+                width: 100%;
+                list-style: none;
+            }
+
+            .nav-menu.active li { opacity: 1; transform: translateY(0); }
+
+            .nav-menu li a {
+                color: white;
+                font-size: 28px;
+                font-family: var(--heading-font);
+                font-weight: 500;
+                padding: 8px 12px;
+                display: inline-block;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            .nav-menu li a.active { font-size: 34px; font-weight: 600; }
+
+            .nav-menu li a:hover { color: var(--accent-color); transform: scale(1.05); }
+
+            .header-icons { display: none; }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .work-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .work-thumbnails {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .thumbnail-item {
+                min-width: 120px;
+                height: 70px;
+            }
+
+            .video-container {
+                height: 250px;
+            }
+
+            .instagram-gallery-container {
+                height: 120px;
+                perspective: none;
+                overflow: hidden;
+            }
+
+            .instagram-gallery {
+                display: flex;
+                transform-style: initial;
+            }
+
+            .instagram-item {
+                position: relative;
+                width: calc(100% / 3);
+                flex: 0 0 calc(100% / 3);
+                transform: none !important;
+                opacity: 1 !important;
+                z-index: auto !important;
+            }
+
+            .instagram-item.next,
+            .instagram-item.prev,
+            .instagram-item.hidden {
+                display: none;
+            }
+
+            .instagram-item.active {
+                display: block;
+                position: relative;
+                left: auto !important;
+            }
+
+            .gallery-nav {
+                width: 35px;
+                height: 35px;
+            }
+
+            .consultation-btn {
+                padding: 12px 30px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo"><img src="logo.png" alt="SAFIX" style="height: 60px; width: auto; object-fit: contain;"></a>
+
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html" class="active">About Us</a></li>
+                <li><a href="apply.html">Services</a></li>
+                <li><a href="enquiry.html">Contacts</a></li>
+            </ul>
+
+            <div class="header-icons">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>About Safwan Shaikh</h1>
+                <p>Founder and Owner of Safix Enterprises. Expeert Civil Engineer and Interior Designer</p>
+            </div>
+            <div class="hero-image" style="background: none;">
+                <img src="safwan.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Safwan Section -->
+    <section class="about-leader-section">
+        <div class="container">
+            <div class="leader-content align-left">
+                <p style="color: black; text-align: left;"><strong>Safwan Shaikh, owner of Safix Enterprises, is a skilled Civil Engineer with over 5+ years of experience in the industry. He specializes in commercial and residential civil works, along with complete interior solutions. With strong expertise in site management, Safwan ensures that every project is executed with quality, professionalism, and timely delivery.</strong></p>
+            </div>
+        </div>
+    </section>
+    <!-- Hero2 Section -->
+    <section class="hero-section2">
+        <div class="hero-content hero-reverse">
+            <div class="hero-image" style="background: none; width: 300px; height: 600px; margin: 0 auto;">
+                <img src="tabish.jpg" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+            </div>
+            <div class="hero-text">
+                <h1>About Tabish Ansari</h1>
+                <p>IT Services operator and Internship Manager</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Safwan Section -->
+    <section class="about-leader-section">
+        <div class="container">
+            <div class="leader-content align-right">
+                <p style="color: black; text-align: right;"><strong>Tabish Ansari works under Safix Enterprises, contributing to the company’s IT services and internship programs. With over 2 years of experience in the IT field, he manages and supports projects related to websites, mobile applications, UI design, AI agents, and other digital solutions.
+
+                    Tabish also plays a key role in internship coordination, guiding students and freshers in developing practical IT skills, ensuring smooth delivery of digital and technology-driven solutions.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section class="work-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work</h2>
+                <p>Explore our portfolio of exceptional projects and see the quality craftsmanship that defines Safix Enterprises</p>
+            </div>
+            
+            <div class="work-gallery">
+                <div class="work-item main-video">
+                    <div class="video-container">
+                        <video id="mainVideo" muted loop>
+                            <source src="ad of the campaign.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay">
+                            <div class="play-btn" id="playBtn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Premium Construction Projects</h3>
+                        <p>High-quality residential and commercial construction work</p>
+                    </div>
+                </div>
+                
+                <div class="work-thumbnails">
+                    <div class="thumbnail-item active" data-video="ad of the campaign.mp4" data-title="Premium Construction Projects" data-desc="High-quality residential and commercial construction work">
+                        <video muted>
+                            <source src="ad of the campaign.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="thumbnail-item" data-video="ad2.o.mp4" data-title="Interior Design Solutions" data-desc="Complete interior transformation and design services">
+                        <video muted>
+                            <source src="ad2.o.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="thumbnail-item" data-video="ad3.o.mp4" data-title="IT Services & Solutions" data-desc="Modern technology solutions and digital services">
+                        <video muted>
+                            <source src="ad3.o.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="thumbnail-item" data-video="ad4.mp4" data-title="Professional Training" data-desc="Internship programs and skill development">
+                        <video muted>
+                            <source src="ad4.mp4" type="video/mp4">
+                        </video>
+                        <div class="thumbnail-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Gallery Section -->
+    <section class="instagram-section">
+        <div class="container">
+            <div class="instagram-header">
+                <h2>FOLLOW US ON INSTAGRAM</h2>
+                <p>@SAFIXENTERPRISES</p>
+            </div>
+            
+            <div class="instagram-gallery-container">
+                <div class="instagram-gallery" id="instagramGallery">
+                    <div class="instagram-item">
+                        <img src="pg1.jpg" alt="Interior Design">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg2.jpg" alt="Modern Kitchen">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg3.jpg" alt="Blue Kitchen">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg4.jpg" alt="Dining Room">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg5.jpg" alt="Living Room">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg6.jpg" alt="Modern Design">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg7.jpg" alt="Modern Design">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg8.jpg" alt="Modern Design">
+                    </div>
+                    <div class="instagram-item">
+                        <img src="pg9.jpg" alt="Modern Design">
+                    </div>
+                </div>
+                
+                <button class="gallery-nav prev" id="galleryPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav next" id="galleryNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="consultation-btn-container">
+                <a href="enquiry.html" class="consultation-btn">SCHEDULE A CONSULTATION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Safix Enterprises. All rights reserved.</p>
+            <p>Civil Lines | Excellence in Construction & Interior Design</p>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle (robust)
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const header = document.getElementById('header');
+        let menuOpen = false;
+
+        function openMenu() {
+            menuOpen = true;
+            mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+            mobileToggle.classList.add('active');
+            navMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuOpen = false;
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            mobileToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!menuOpen) openMenu(); else closeMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (menuOpen && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOpen) closeMenu();
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => closeMenu());
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Interactive Video Gallery
+        const mainVideo = document.getElementById('mainVideo');
+        const playBtn = document.getElementById('playBtn');
+        const videoOverlay = document.querySelector('.video-overlay');
+        const thumbnails = document.querySelectorAll('.thumbnail-item');
+        const workInfo = document.querySelector('.work-info');
+
+        if (playBtn && mainVideo) {
+            // Play/Pause main video
+            playBtn.addEventListener('click', () => {
+                if (mainVideo.paused) {
+                    mainVideo.play();
+                    videoOverlay.classList.add('playing');
+                } else {
+                    mainVideo.pause();
+                    videoOverlay.classList.remove('playing');
+                }
+            });
+
+            // Video ended event
+            mainVideo.addEventListener('ended', () => {
+                videoOverlay.classList.remove('playing');
+            });
+        }
+
+        // Thumbnail click events
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                // Remove active class from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked thumbnail
+                thumbnail.classList.add('active');
+
+                // Get video data
+                const videoSrc = thumbnail.dataset.video;
+                const title = thumbnail.dataset.title;
+                const desc = thumbnail.dataset.desc;
+
+                // Update main video
+                mainVideo.src = videoSrc;
+                mainVideo.load();
+
+                // Update work info
+                if (workInfo) {
+                    workInfo.querySelector('h3').textContent = title;
+                    workInfo.querySelector('p').textContent = desc;
+                }
+
+                // Reset video overlay
+                videoOverlay.classList.remove('playing');
+            });
+
+            // Auto-play thumbnail videos on hover
+            const video = thumbnail.querySelector('video');
+            if (video) {
+                thumbnail.addEventListener('mouseenter', () => {
+                    video.play();
+                });
+                
+                thumbnail.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+            }
+        });
+
+        // 3D Instagram Gallery Carousel
+        const instagramGallery = document.getElementById('instagramGallery');
+        const galleryPrev = document.getElementById('galleryPrev');
+        const galleryNext = document.getElementById('galleryNext');
+        const galleryItems = document.querySelectorAll('.instagram-item');
+        let currentIndex = 0;
+        const totalImages = 9;
+        const visibleImages = 6;
+
+        function positionItems() {
+            const isMobile = window.innerWidth <= 768;
+            const itemsToShow = isMobile ? 3 : visibleImages;
+            
+            galleryItems.forEach((item, index) => {
+                item.classList.remove('active', 'next', 'prev', 'hidden');
+                
+                const position = (index - currentIndex + totalImages) % totalImages;
+                
+                if (isMobile) {
+                    if (position < itemsToShow) {
+                        item.classList.add('active');
+                        item.style.left = `${(position * (100 / itemsToShow))}%`;
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                } else {
+                    if (position < itemsToShow) {
+                        item.classList.add('active');
+                        item.style.left = `${(position * (100 / itemsToShow))}%`;
+                        item.style.zIndex = 5;
+                    } else if (position === itemsToShow) {
+                        item.classList.add('next');
+                        item.style.left = `${(itemsToShow * (100 / itemsToShow))}%`;
+                    } else if (position === totalImages - 1) {
+                        item.classList.add('prev');
+                        item.style.left = `-${(100 / itemsToShow)}%`;
+                    } else {
+                        item.classList.add('hidden');
+                        item.style.left = `${(position * (100 / itemsToShow))}%`;
+                    }
+                }
+            });
+        }
+
+        galleryNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            positionItems();
+        });
+
+        galleryPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            positionItems();
+        });
+
+        // Initialize gallery
+        positionItems();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            positionItems();
+        });
+    </script>
+</body>
+
+</html>
